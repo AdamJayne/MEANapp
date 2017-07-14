@@ -1,0 +1,17 @@
+{
+  "name": "profconnclient",
+  "description": "Client side for Profession Connection",
+  "main": "index.js",
+  "authors": [
+    "Adam Jayne"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
