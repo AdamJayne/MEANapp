@@ -1,0 +1,59 @@
+/*color scheme for the app: 
+	1. #C6C5B9
+	2. #4EFFEF
+	3. #8DA1B9
+	4. #2C497F
+	5. #49475B
+*/
+body {
+	background-color: #C6C5B9;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+	color: #D9514E;
+}
+
+#logo {
+	height: 100%;
+}
+
+.navbar {
+	background: #2C497F;
+	margin: 0;
+	border: none;
+	border-radius: 0;
+}
+
+.navbar-brand{
+	color: white;
+}
+
+#nav-button{
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+#def-save, #signup, #login, #log-save{
+	background-color: #D9514E;
+	border: 1px solid white;
+	color: white;
+}
+
+.container {
+	width: 75% !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.row {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.col-xs-12 {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}

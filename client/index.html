@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="profconn">
 	<head>
 		<meta charset="utf-8">
-		<meta >
-		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Profession Connection</title>
+		<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/content/app.css">
 	</head>
 	<body>
-		<div class="">
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<!-- <div class="container">
+				<a class="navbar-brand" href="/#!/home"><img src="/img/Profconn.png"></a>
+			</div> -->
+			<div class="container">
+				<a class="navbar-brand" href="/#!/home">Profession Connection</a>
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="collapse navbar-collapse navHeaderCollapse">
+					<ul class="nav navbar-nav navbar-right">
+	  					<li>
+	  						<a ng-href="/#!/signin">Login</a>
+		  				</li>
+		  				<li>
+		  					<a ng-href="/#!/signup">Sign Up</a>
+		  				</li>
+		  				<li>
+		  					<a ng-href="/#!/userMap">User Map</a>
+		  				</li>
+		  				<li>
+		  					<a ng-href="/#!/profile">Manage Profile</a>
+		  				</li>
+	  				</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div ui-view>
 			
 		</div>
+		<script type="text/javascript" src="bower_components/angular-loader/angular-loader.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="content/bundle.js"></script>
 	</body>
 </html>
+
+
+				
+				

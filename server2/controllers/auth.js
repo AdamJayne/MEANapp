@@ -4,7 +4,8 @@ var config = require('../config');
 
 function createUserToken(user){
 	var timestamp = new Date().getTime();
-	return jwt.encode({sub: user.id, iat: timestamp}, config.secret);
+	console.log(user);
+	return jwt.encode({sub: user._id, iat: timestamp}, config.secret);
 }
 
 exports.signup = function(req, res, next){
@@ -35,18 +36,32 @@ exports.signup = function(req, res, next){
 				return res.status(418).send("Email already has a user assigned to it");
 			}
 			var user = new User({
-			username: username,
-			email: email,
-			password: password,
-			usertype: usertype,
-			profession: profession,
-			address: address,
-			contact: contact
+				username: username,
+				email: email,
+				password: password,
+				usertype: usertype,
+				profession: profession,
+				address: address,
+				contact: contact
 			});
 			user.save(function(err){
 				if(err) {return next(err);}
-				res.json({token: createUserToken(user)});
+				res.json({token: createUserToken(user), id: user._id});
 			});
 		});
 	});
+}
+
+exports.signin = function(req, res, next){
+	console.log(req);
+	var user = {
+		email: req.body.email,
+		password: req.body.password
+	}
+	res.send({token: createUserToken(user), id: req.user._id});
+}
+
+exports.fetch = function(req, res, next){
+	console.log(req);
+	res.send({check: "this"});
 }
