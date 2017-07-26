@@ -57,3 +57,7 @@ h1, h2, h3, h4, h5 {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 }
+
+#map {
+	width: 100%;
+}

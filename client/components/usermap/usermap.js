@@ -14,8 +14,15 @@
 		}
 		userMapConfig.$inject = ['$stateProvider'];
 
-		function UserMapController(){
-
+		function UserMapController($state, UsermapService){
+			var vm = this;
+			UsermapService.fetchAll().then(
+				function(response){
+					vm.users = response;
+					return vm.users;
+				}
+			)
 		}
-		UserMapController.$inject = ['$state']
+
+		UserMapController.$inject = ['$state', 'UsermapService']
 })();

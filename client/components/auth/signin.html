@@ -1,8 +1,10 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-4">
-			<h3>Sign In</h3>
-			<form id="new_user" ng-submit="ctrl.submit()">
+	<div class="container">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3>Sign In</h3>
+			</div>
+			<form class="panel-body" id="new_user" ng-submit="ctrl.submit()">
 				<p>
 					<label for="email">Email</label><br>
 					<input type="text" name="email" ng-model="ctrl.user.email" required>

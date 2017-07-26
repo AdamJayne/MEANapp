@@ -12,4 +12,6 @@ module.exports = function(app){
 	app.post('/signup', Auth.signup);
 	app.post('/signin', requireSignin, Auth.signin);
 	app.get('/currentProfile', requireAuth, Auth.fetch);
+	app.put('/currentProfile', requireAuth, Auth.update);
+	app.get('/profiles', Auth.fetchAll);
 }

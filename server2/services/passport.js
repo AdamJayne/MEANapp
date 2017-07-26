@@ -23,7 +23,6 @@ var jwtOptions = {
 	secretOrKey: config.secret
 };
 var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
-	console.log(payload);
 	User.findById(payload.sub, function(err, user){
 		if(err){return done(err, false);}
 		if(user){

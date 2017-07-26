@@ -1,0 +1,11 @@
+<div class="container">
+	<ul class="nav navbar-nav navbar-right">
+		<li ng-show="!ctrl.signedIn()"><a ui-sref="signin">Sign In</a></li>
+		<li ng-show="ctrl.signedIn()">
+			<a href="#" ng-click="ctrl.logout()">Sign out</a>
+		</li>
+		<li ng-show="ctrl.signedIn()"><a ui-sref="usermap">User Map</a></li>
+		<li ng-show="ctrl.signedIn()"><a ui-sref="profile">Manage Profile</a></li>
+	</ul>
+</div>
+ 

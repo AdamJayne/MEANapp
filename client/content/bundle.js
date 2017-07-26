@@ -79,6 +79,41 @@
 		SignUpController.$inject = ['$state', 'UsersService'];
 })();
 (function(){
+	angular.module('profconn')
+	.directive('userlinks', 
+		function(){
+			UserLinksController.$inject = ['$state', 'CurrentUser', 'SessionToken'];
+			function UserLinksController($state, CurrentUser, SessionToken) {
+				var vm = this;
+				vm.user = function(){
+					return CurrentUser.get();
+				};
+
+				vm.signedIn = function() {
+					// if (vm.user() === {}){
+					// 	return false;
+					// }else{
+					// 	return true;
+					// }
+					return !!(vm.user());
+				};
+
+				vm.logout = function() {
+					CurrentUser.clear();
+					SessionToken.clear();
+					$state.go('home');
+				};
+			}
+			return {
+				scope: {},
+				controller: UserLinksController,
+				controllerAs: 'ctrl',
+				bindToController: true,
+				templateUrl: '/components/navLinks/userlinks.html'
+			};
+		});
+})();
+(function(){
 	angular
 		.module('profconn.home', ['ui.router'])
 		.config(homeConfig);
@@ -118,12 +153,24 @@
 
 		function ProfileController($state, ProfileService, CurrentUser){
 			var vm = this;
+			vm.user={};
+			vm.message ="Update your profile by filling in the fields."
+			vm.submit = function(){
+				console.log(vm.user)
+				ProfileService.update(vm.user).then(
+					function(response){
+						console.log('updated!');
+						$state.go('profile', {}, {reload: "profile"});
+					}
+				)
+			}
 			ProfileService.fetch().then(function(data){
 				vm.username= data.username
 				vm.email= data.email
 				vm.usertype= data.usertype
 				vm.profession= data.profession
 				vm.address= data.address
+				vm.description=data.description
 				vm.contact= data.contact
 			});
 		}
@@ -146,10 +193,17 @@
 		}
 		userMapConfig.$inject = ['$stateProvider'];
 
-		function UserMapController(){
-
+		function UserMapController($state, UsermapService){
+			var vm = this;
+			UsermapService.fetchAll().then(
+				function(response){
+					vm.users = response;
+					return vm.users;
+				}
+			)
 		}
-		UserMapController.$inject = ['$state']
+
+		UserMapController.$inject = ['$state', 'UsermapService']
 })();
 (function(){
 	angular.module('profconn')
@@ -175,23 +229,31 @@
 		.service('CurrentUser', ['$window', function($window){
 			function CurrentUser(){
 				var currUser = $window.localStorage.getItem('currentUser');
-				if (currUser && currUser !== "undefined") {
+				// if(currUser){
+				// 	console.log("true");
+				// }else{
+				// 	console.log("false")
+				// };
+				if (currUser && currUser !==  "undefined") {
+					console.log("annoying");
 					this.currentUser= JSON.parse($window.localStorage.getItem('currentUser'));
 				}
+
 			}
 			CurrentUser.prototype.set = function(user){
 				this.currentUser = user;
 				$window.localStorage.setItem('currentUser', JSON.stringify(user));
 			};
 			CurrentUser.prototype.get = function(){
-				return this.currentUser || {};
+				// console.log(this.currentUser);
+				return this.currentUser || false;
 			};
 			CurrentUser.prototype.clear = function(){
 				this.currentUser = undefined;
 				$window.localStorage.removeItem('currentUser');
 			};
 			CurrentUser.prototype.isSignedIn = function(){
-				return !!this.get()._id;
+				return !!this.get();
 			};
 			return new CurrentUser();
 		}]);
@@ -216,12 +278,19 @@
 			profileService.fetch = function(profile){
 				return $http.get(API_BASE + 'currentProfile')
 					.then(function(response){
-						return response;
+						return response.data;
 					});
 			};
 
 			profileService.getProfile = function(){
 				return profileService.currentProfile;
+			};
+
+			profileService.update = function(user){
+				return $http.put(API_BASE + 'currentProfile', {user: user})
+					.then(function(response){
+						return response.data;
+					});
 			};
 		}
 })();
@@ -245,7 +314,22 @@
 			return new SessionToken();
 		}]);
 })();
+(function(){
+	angular.module('profconn')
+		.service('UsermapService', UsermapService);
 
+		UsermapService.$inject = ['$http', 'API_BASE'];
+		function UsermapService($http, API_BASE){
+			var usermapService = this;
+
+			usermapService.fetchAll = function(){
+				return $http.get(API_BASE + 'profiles')
+					.then(function(response){
+						return response.data;
+					});
+			}
+		}
+})();
 (function(){
 	angular.module('profconn')
 		.service('UsersService', [

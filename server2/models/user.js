@@ -18,9 +18,10 @@ var userSchema = new Schema({
 	},
 	contact: {
 		email: {type: String},
-		weburl: {type: String},
+		url: {type: String},
 		phone: {type: String}
-	}
+	},
+	description: {type: String}
 });
 
 userSchema.pre('save', function(next){

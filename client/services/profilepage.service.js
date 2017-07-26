@@ -18,12 +18,19 @@
 			profileService.fetch = function(profile){
 				return $http.get(API_BASE + 'currentProfile')
 					.then(function(response){
-						return response;
+						return response.data;
 					});
 			};
 
 			profileService.getProfile = function(){
 				return profileService.currentProfile;
+			};
+
+			profileService.update = function(user){
+				return $http.put(API_BASE + 'currentProfile', {user: user})
+					.then(function(response){
+						return response.data;
+					});
 			};
 		}
 })();
