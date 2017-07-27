@@ -9,9 +9,10 @@ module.exports = function(app){
 		res.send({message: 'hey'});
 		// res.send({hi: 'there'});
 	});
-	app.post('/signup', Auth.signup);
-	app.post('/signin', requireSignin, Auth.signin);
-	app.get('/currentProfile', requireAuth, Auth.fetch);
-	app.put('/currentProfile', requireAuth, Auth.update);
-	app.get('/profiles', Auth.fetchAll);
+	app.post('/api/signup', Auth.signup);
+	app.post('/api/signin', requireSignin, Auth.signin);
+	app.get('/api/currentProfile', requireAuth, Auth.fetch);
+	app.put('/api/currentProfile', requireAuth, Auth.update);
+	app.get('/api/profiles', Auth.fetchAll);
+	app.delete('/api/delete', requireAuth, Auth.delete);
 }

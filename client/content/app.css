@@ -6,7 +6,8 @@
 	5. #49475B
 */
 body {
-	background-color: #C6C5B9;
+	background-color: #DBDBDB;
+	background-image: url(../img/batthern.png);
 	margin: 0;
 	padding: 0;
 }
@@ -20,13 +21,18 @@ h1, h2, h3, h4, h5 {
 }
 
 .navbar {
-	background: #2C497F;
+	background: #003d61;
 	margin: 0;
 	border: none;
 	border-radius: 0;
+	font-size: 2rem;
 }
 
-.navbar-brand{
+.nav-header {
+	font-size: 2rem;
+}
+
+.collapse{
 	color: white;
 }
 
@@ -40,6 +46,19 @@ h1, h2, h3, h4, h5 {
 	background-color: #D9514E;
 	border: 1px solid white;
 	color: white;
+}
+
+#home1 {
+	margin-top: 5%;
+	font-size: 6rem;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.homebutton{
+	width: 100px;
+	font-size: 2rem;
+	font-weight: 600;
+	box-shadow: 1px 1px 1px #000;
 }
 
 .container {
@@ -60,4 +79,77 @@ h1, h2, h3, h4, h5 {
 
 #map {
 	width: 100%;
+}
+
+.row-centered {
+	text-align: center;
+}
+
+.panel {
+	margin-top: 2em;
+}
+
+.signinPanel {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.signin3{
+	margin: 10;
+	font-weight: 575;
+}
+
+.signupPanel{
+	text-align: center;
+	margin: 10px;
+}
+
+.col-centered {
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    /* reset the text-align */
+    text-align:center;
+    /* inline-block space fix */
+}
+
+#usermapCSS h3{
+	margin: 10px;
+}
+
+.usersPanel {
+	height: 620.5px;
+}
+
+.userProfilePanel {
+	margin-top: 0;
+}
+
+.mapPanel {
+	margin-bottom: 0;
+}
+
+.usersBody {
+	height: 89.3%;
+	overflow-y: scroll;
+}
+
+#addButton {
+	float: right;
+}
+
+.map-responsive {
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	height: 0;
+}
+
+.map-responsive iframe{
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
 }

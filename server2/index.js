@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 
 //DB connection
-mongoose.connect('mongodb://localhost:profconn/profconn');
+mongoose.connect('mongodb://admin:admin@ds127063.mlab.com:27063/profconn');
 
 app.use(cors());
 

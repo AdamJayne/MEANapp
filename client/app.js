@@ -5,7 +5,8 @@
 		'profconn.auth.signup',
 		'profconn.auth.signin',
 		'profconn.profile',
-		'profconn.usermap'
+		'profconn.usermap',
+		'profconn.delete'
 	]);
 	function config($urlRouterProvider){
 		$urlRouterProvider.otherwise('/home');

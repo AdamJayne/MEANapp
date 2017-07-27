@@ -29,6 +29,14 @@
 					});
 					return loginPromise;
 				};
+				UsersService.prototype.delete = function(user){
+					var deletePromise = $http.delete(API_BASE + 'delete', {id: user.id});
+					deletePromise.then(function(response){
+						SessionToken.clear();
+						CurrentUser.clear();
+					});
+					return deletePromise;
+				}
 				return new UsersService();
 			}]);
 })();

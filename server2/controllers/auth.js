@@ -83,7 +83,6 @@ exports.fetchAll = function(req,res,next){
 }
 
 exports.update = function(req, res, next){
-	console.log(req.body.user);
 	var id = req.user.id;
 	var username = req.body.user.username;
 	var email = req.body.user.email;
@@ -103,4 +102,17 @@ exports.update = function(req, res, next){
 		res.send("updated");
 	});
 	
+}
+
+exports.delete = function(req, res, next){
+	var id = req.user._id;
+	User.findByIdAndRemove(id, function(err, user){
+		if(err){
+			res.send(err);
+		}
+		var response = {
+			message: "User successfully deleted"
+		}
+		res.send(response);
+	});
 }

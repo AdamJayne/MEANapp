@@ -1,9 +1,7 @@
 <div class="container">
-	<div class="container">
-		<div class="panel panel-info">
+		<div class="panel panel-info signupPanel col-xs-12 col-sm-12col-centered">
 			<div class="panel-heading">
-				<h3>Sign Up</h3>
-				<p>{{ctrl.message}}</p>
+				<h3 class="signup3">Sign Up</h3>
 			</div>
 			<form class="panel-body" id="new_user" ng-submit="ctrl.submit()">
 				<p>
@@ -18,12 +16,11 @@
 					<label for="password">Password</label><br>
 					<input type="password" ng-model="ctrl.user.password" name="password" required>
 				</p>
-				<input type="submit" id="signup" name="commit" value="Sign Up" class="btn btn-default">
+				<input type="submit" id="signup" name="commit" value="Sign Up" class="btn btn-default"><br><br>
 				<span class="login">
 					Already have an account?
 					<a ui-sref="signin">Log in.</a>
 				</span>
 			</form>
 		</div>
-	</div>
 </div>
